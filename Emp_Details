@@ -1,0 +1,62 @@
+import javax.swing.JOptionPane;
+class Employee
+{
+	public String name,address;
+	public int yoj;
+	public double salary;
+	Employee(){}
+	Employee(String n,String a,int y,double s)
+	{
+		name=n;
+		address=a;
+		yoj=y;
+		salary=s;	
+	}
+	public void input()
+	{
+		name=JOptionPane.showInputDialog(null,"Enter the employee name:");
+		address=JOptionPane.showInputDialog(null,"Enter the employee address:");	
+		yoj=Integer.parseInt(JOptionPane.showInputDialog(null,"Enter year of joining:"));
+		salary=Double.parseDouble(JOptionPane.showInputDialog(null,"Enter employee salary:"));	
+	}
+	public void display()	
+	{
+		System.out.print(name+"\t\t"+yoj+"\t\t "+address+"\t\t "+salary);
+	}
+}
+public class Emp_Details
+{
+	public static void main(String args[])
+	{
+		Employee[] e=new Employee[3];
+		JOptionPane.showMessageDialog(null,"!!Enter the employee details!!");
+		for(int i=0;i<3;i++)
+		{
+			e[i]=new Employee();
+			e[i].input();	
+		}
+		System.out.println("Name\t\t"+"Year of Joining\t\t"+"Address\t\t"+"Salary\n");
+		for(int i=0;i<3;i++)
+		{
+			if(e[i].name.length()>15)
+			{
+				System.out.print(e[i].name.charAt(0));
+				for(int x=1;x<e[i].name.length();x++)
+				{
+					char c=e[i].name.charAt(x);
+					System.out.print(c);
+					if(x%15==0)
+					{
+						System.out.println("");
+					}
+				}
+				System.out.print("\t\t"+e[i].yoj+"\t\t"+e[i].address+"\t\t"+e[i].salary);
+				i++;
+				System.out.println();
+			}
+			e[i].display();
+			System.out.println();	
+		}	
+	}
+}
+
